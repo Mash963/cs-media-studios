@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ButtonLink } from "@/components/Button";
 import Reveal from "@/components/Reveal";
 import CTABanner from "@/components/CTABanner";
@@ -19,18 +20,29 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── Cinematic Hero — art-directed ───────────────────── */}
-      <section className="hero-gradient grain relative overflow-hidden text-paper">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/55" aria-hidden />
-        <div className="grid-fine absolute inset-0 opacity-[0.035]" aria-hidden />
-        {/* Huge typographic watermark */}
-        <div className="pointer-events-none absolute inset-0 flex items-start justify-end overflow-hidden" aria-hidden>
+      {/* ── Cinematic Hero — art-directed with brand background ── */}
+      <section className="relative overflow-hidden text-paper">
+        {/* Brand background image — save your uploaded image as /public/hero-bg.jpg */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero-bg.jpg"
+            alt="CS Media Studios — Conqueror Supreme wall logo"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {/* Cinematic overlay — ensures text readability while letting brand show */}
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/60 to-ink/85" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/20 via-transparent to-ink/30" aria-hidden />
+        </div>
+        <div className="grid-fine absolute inset-0 opacity-[0.04]" aria-hidden />
+        <div className="grain absolute inset-0 opacity-40" aria-hidden />
+        {/* Subtle watermark over image — reinforces studio DNA */}
+        <div className="pointer-events-none absolute inset-0 flex items-start justify-end overflow-hidden opacity-30 mix-blend-overlay" aria-hidden>
           <span className="watermark watermark-gold select-none pt-20 pr-[2vw] text-[22vw] leading-none md:text-[18vw] lg:text-[16rem] xl:text-[19rem]">
             CS
           </span>
-        </div>
-        <div className="pointer-events-none absolute left-[-2vw] bottom-[8%] hidden md:block" aria-hidden>
-          <span className="watermark text-[11vw] leading-none opacity-[0.045] lg:text-[9rem]">CONQUEROR</span>
         </div>
 
         <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-28 md:px-8 md:pb-24 md:pt-36">
