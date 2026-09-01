@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#131215"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#1F3A5F"/>
+  <!-- CS monogram -->
+  <text x="80" y="200" font-family="Arial, Helvetica, sans-serif" font-size="96" font-weight="800" fill="#D87A3C" letter-spacing="8">CS</text>
+  <text x="80" y="300" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="800" fill="#F6F5F1" letter-spacing="-2">ONE STUDIO.</text>
+  <text x="80" y="400" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="800" fill="#D87A3C" letter-spacing="-2">EVERY FORMAT.</text>
+  <text x="80" y="470" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#F6F5F1" letter-spacing="6">CS MEDIA STUDIOS</text>
+  <text x="80" y="500" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#8b8791" letter-spacing="3">CONQUEROR SUPREME CREATIVE &amp; TECHNOLOGY STUDIO · SOUTH AFRICA</text>
+</svg>
