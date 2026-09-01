@@ -36,14 +36,8 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/60 to-ink/85" aria-hidden />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/20 via-transparent to-ink/30" aria-hidden />
         </div>
-        <div className="grid-fine absolute inset-0 opacity-[0.04]" aria-hidden />
-        <div className="grain absolute inset-0 opacity-40" aria-hidden />
-        {/* Subtle watermark over image — reinforces studio DNA */}
-        <div className="pointer-events-none absolute inset-0 flex items-start justify-end overflow-hidden opacity-30 mix-blend-overlay" aria-hidden>
-          <span className="watermark watermark-gold select-none pt-20 pr-[2vw] text-[22vw] leading-none md:text-[18vw] lg:text-[16rem] xl:text-[19rem]">
-            CS
-          </span>
-        </div>
+        <div className="grid-fine absolute inset-0 opacity-[0.02]" aria-hidden />
+        <div className="grain absolute inset-0 opacity-20" aria-hidden />
 
         <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-28 md:px-8 md:pb-24 md:pt-32">
           {/* Top technical bar */}
