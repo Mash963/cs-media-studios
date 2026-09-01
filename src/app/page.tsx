@@ -45,10 +45,10 @@ export default function HomePage() {
           </span>
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-28 md:px-8 md:pb-24 md:pt-36">
+        <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-28 md:px-8 md:pb-24 md:pt-32">
           {/* Top technical bar */}
           <Reveal>
-            <div className="mb-10 flex items-center justify-between border-b border-paper/10 pb-4">
+            <div className="mb-8 flex items-center justify-between border-b border-paper/10 pb-4">
               <div className="flex items-center gap-3">
                 <span className="flex h-8 w-8 items-center justify-center bg-paper font-display text-xs font-extrabold tracking-widest text-ink">CS</span>
                 <span className="hidden sm:inline font-display text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/50">CS / 001 — EST. 2026 — South Africa</span>
@@ -59,43 +59,56 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          {/* Asymmetrical hero grid */}
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12 lg:items-end">
+          {/* ── Falling brand onto logo — requested animation ── */}
+          {/* The CS badge is in the background image at ~center. These texts fall from above and land on it. */}
+          <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-5 pt-16 md:pt-12" aria-hidden>
+            {/* Spacer to align falling texts just below the badge (badge is at image center) */}
+            <div className="h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px]" aria-hidden />
+            <div className="flex flex-col items-center text-center">
+              <h1 className="animate-fall font-display text-[1.7rem] font-extrabold leading-none tracking-[-0.02em] drop-shadow-[0_3px_14px_rgba(0,0,0,0.65)] sm:text-3xl md:text-4xl lg:text-[2.7rem]">
+                <span className="bg-gradient-to-b from-gold via-gold to-gold-deep bg-clip-text text-transparent">CS MEDIA STUDIOS</span>
+              </h1>
+              <p className="animate-fall-soft delay-300 mt-3 font-display text-[10px] font-semibold uppercase tracking-[0.22em] text-gold/95 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] sm:text-xs md:text-sm">
+                Conqueeror Supreme Creative & Technology Studio
+              </p>
+              <p className="animate-fall-soft delay-500 mt-2 font-display text-xs font-semibold uppercase tracking-[0.2em] text-paper drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] sm:text-sm">
+                One Studio. Every Format.
+              </p>
+              <div className="animate-fall-soft delay-700 mx-auto mt-4 h-px w-16 bg-gold/50" aria-hidden />
+            </div>
+            {/* Keep flow below — pushes grid down so it doesn't overlap badge */}
+            <div className="h-6 md:h-8" aria-hidden />
+          </div>
+          {/* In-flow spacer matching the absolute block's height so content below doesn't overlap */}
+          <div className="h-[280px] sm:h-[300px] md:h-[340px] lg:h-[380px]" aria-hidden />
+
+          {/* Hero details — below the fall */}
+          <div className="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12 lg:items-end">
             <div>
-              <Reveal>
-                <p className="mb-4 flex items-center gap-2 font-display text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
+              <Reveal delay={300}>
+                <p className="mb-3 flex items-center gap-2 font-display text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
                   <span className="h-px w-6 bg-gold" aria-hidden />
                   Conqueror Supreme
                 </p>
               </Reveal>
-              <Reveal delay={60}>
-                <h1 className="font-display text-[2.55rem] font-extrabold leading-[0.88] tracking-[-0.04em] sm:text-5xl md:text-6xl lg:text-[4.6rem]">
-                  <span className="block text-paper/90">CS MEDIA</span>
-                  <span className="block text-paper">STUDIOS</span>
-                </h1>
-              </Reveal>
-              <Reveal delay={110}>
-                <p className="mt-4 font-display text-xs font-medium uppercase tracking-[0.2em] text-paper/40">Conqueror Supreme Creative & Technology Studio</p>
-              </Reveal>
-              <div className="rule-gold shimmer-line mt-6 w-20" aria-hidden />
-              <Reveal delay={160}>
-                <h2 className="mt-6 max-w-xl font-display text-[2.2rem] font-bold leading-[0.9] tracking-[-0.03em] sm:text-4xl md:text-5xl">
-                  <span className="block text-paper">ONE STUDIO.</span>
+              <Reveal delay={340}>
+                <h2 className="max-w-xl font-display text-[2.1rem] font-bold leading-[0.9] tracking-[-0.03em] text-paper sm:text-4xl md:text-[2.6rem]">
+                  <span className="block">ONE STUDIO.</span>
                   <span className="block text-gold">EVERY FORMAT.</span>
                 </h2>
               </Reveal>
-              <Reveal delay={200}>
-                <p className="mt-5 max-w-md font-display text-sm font-semibold uppercase tracking-[0.18em] leading-relaxed text-paper/70">
+              <Reveal delay={380}>
+                <p className="mt-4 max-w-md font-display text-sm font-semibold uppercase tracking-[0.18em] leading-relaxed text-paper/70">
                   Design <span className="text-gold/80">·</span> Photo <span className="text-gold/80">·</span> Video <span className="text-gold/80">·</span> Motion <span className="text-gold/80">·</span> Campaign Media
                 </p>
               </Reveal>
-              <Reveal delay={240}>
+              <Reveal delay={420}>
                 <p className="mt-2 font-display text-xs font-medium uppercase tracking-[0.18em] text-paper/30">Web · Software · Technology — Coming soon</p>
               </Reveal>
             </div>
 
             <div className="lg:pb-2">
-              <Reveal delay={180}>
+              <Reveal delay={360}>
                 <div className="border border-paper/10 bg-ink/40 p-6 backdrop-blur md:p-7">
                   <p className="label-studio text-gold">Start here</p>
                   <p className="mt-3 font-display text-base font-semibold leading-snug text-paper">A creative studio that proves its claim on its own homepage.</p>
