@@ -4,7 +4,7 @@
 
 :root {
   --background: #f6f5f1;
-  --foreground: #131215;
+  --foreground: #0f0f12;
 }
 
 html {
@@ -30,77 +30,140 @@ h4 {
 }
 
 ::selection {
-  background: #1f3a5f;
-  color: #f6f5f1;
+  background: #c5a572;
+  color: #0f0f12;
 }
 
-/* Cinematic grain overlay */
+/* ── Cinematic grain ─────────────────────────────── */
 .grain::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.055'/%3E%3C/svg%3E");
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.55;
   mix-blend-mode: overlay;
 }
 
+/* ── Hero gradients — deep black/graphite with gold heat ── */
 .hero-gradient {
   background:
-    radial-gradient(ellipse 900px 600px at 70% -10%, rgba(31,58,95,0.45), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 0% 100%, rgba(216,122,60,0.08), transparent 60%),
-    linear-gradient(180deg, #0f0f12 0%, #131215 55%, #1a1820 100%);
+    radial-gradient(ellipse 900px 620px at 72% -12%, rgba(31,58,95,0.42), transparent 62%),
+    radial-gradient(ellipse 700px 520px at 0% 100%, rgba(197,165,114,0.10), transparent 58%),
+    radial-gradient(ellipse 400px 400px at 100% 60%, rgba(139,30,36,0.06), transparent 60%),
+    linear-gradient(180deg, #0a0a0d 0%, #0f0f12 48%, #16161a 100%);
 }
 
-.text-stroke {
-  -webkit-text-stroke: 1px rgba(246,245,241,0.18);
+/* Hairline gold rule */
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(90deg, #c5a572 0%, rgba(197,165,114,0.15) 100%);
+}
+
+/* Huge typographic watermark */
+.watermark {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  -webkit-text-stroke: 1px rgba(246,245,241,0.07);
   color: transparent;
+  user-select: none;
+  pointer-events: none;
+}
+.watermark-gold {
+  -webkit-text-stroke: 1px rgba(197,165,114,0.09);
 }
 
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Studio label — tiny technical */
+.label-studio {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .text-pretty {
-    text-wrap: pretty;
-  }
+/* Fine grid overlay */
+.grid-fine {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
-/* Scroll reveal */
+/* ── Button art — sliding arrow ─────────────────── */
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-arrow svg {
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.btn-arrow:hover svg {
+  transform: translateX(4px);
+}
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.7s;
+}
+.btn-shimmer:hover::after {
+  transform: translateX(100%);
+}
+
+/* ── Card lift + border glow ────────────────────── */
+.card-lift {
+  transition:
+    transform 0.45s cubic-bezier(0.22,1,0.36,1),
+    box-shadow 0.45s cubic-bezier(0.22,1,0.36,1),
+    border-color 0.35s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(15,15,18,0.14);
+  border-color: rgba(197,165,114,0.22) !important;
+}
+
+/* ── Image zoom on hover — exhibition ───────────── */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img,
+.img-zoom > div {
+  transition: transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.group:hover .img-zoom img,
+.group:hover .img-zoom > div {
+  transform: scale(1.04);
+}
+
+/* ── Scroll reveal ──────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(26px);
   transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
-
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* Subtle hero line animation */
+/* ── Line grow ────────────────────────────────── */
 @keyframes shimmer-line {
   0% { transform: scaleX(0); }
   100% { transform: scaleX(1); }
@@ -109,6 +172,19 @@ h4 {
   transform-origin: left;
   animation: shimmer-line 1.2s cubic-bezier(0.22,1,0.36,1) 0.6s both;
 }
+@media (prefers-reduced-motion: reduce) { .shimmer-line { animation: none; transform: none; } }
+
+/* ── Reduced motion ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .shimmer-line { animation: none; transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
 }

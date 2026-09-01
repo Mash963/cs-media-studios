@@ -30,13 +30,17 @@ export default function Header() {
     };
   }, [open]);
 
+  const isDarkHero = pathname === "/" && !scrolled && !open;
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300",
-        scrolled || open
-          ? "border-line bg-paper/95 backdrop-blur"
-          : "border-transparent bg-transparent"
+        isDarkHero
+          ? "border-paper/10 bg-transparent"
+          : scrolled || open
+            ? "border-line bg-paper/95 backdrop-blur"
+            : "border-transparent bg-transparent"
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20 md:px-8">
@@ -45,16 +49,19 @@ export default function Header() {
           className="flex items-center gap-3 leading-none"
           aria-label={`${site.name} — home`}
         >
-          <span className="flex h-9 w-9 items-center justify-center bg-ink font-display text-sm font-extrabold tracking-widest text-paper">
+          <span className={cn("flex h-9 w-9 items-center justify-center font-display text-sm font-extrabold tracking-widest transition-colors", isDarkHero ? "bg-paper text-ink" : "bg-ink text-paper")}>
             CS
           </span>
           <span className="flex flex-col">
-            <span className="font-display text-[15px] font-bold tracking-tight text-ink">
+            <span className={cn("font-display text-[15px] font-bold tracking-tight transition-colors", isDarkHero ? "text-paper" : "text-ink")}>
               {site.name}
             </span>
-            <span className="hidden text-[9px] font-medium uppercase tracking-[0.18em] text-ink-muted sm:block">
+            <span className={cn("hidden text-[9px] font-medium uppercase tracking-[0.18em] sm:block", isDarkHero ? "text-paper/50" : "text-ink-muted")}>
               {site.legalName}
             </span>
+          </span>
+          <span className={cn("ml-1 hidden border-l pl-3 font-display text-[10px] font-semibold uppercase tracking-[0.18em] md:block", isDarkHero ? "border-paper/15 text-gold" : "border-line text-gold-deep")}>
+            CS / 001 — 2026
           </span>
         </Link>
 
@@ -66,23 +73,26 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative font-display text-sm font-medium transition-colors",
-                  active ? "text-ink" : "text-ink-muted hover:text-ink"
+                  "group relative font-display text-sm font-medium transition-colors",
+                  isDarkHero
+                    ? active ? "text-paper" : "text-paper/60 hover:text-paper"
+                    : active ? "text-ink" : "text-ink-muted hover:text-ink"
                 )}
               >
                 {item.label}
+                <span className={cn("pointer-events-none absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-300 group-hover:scale-x-100", active && "scale-x-100")} aria-hidden />
               </Link>
             );
           })}
-          <ButtonLink href="/order" size="md">
-            Start a Project
+          <ButtonLink href="/order" size="md" variant={isDarkHero ? "paper" : "primary"} className={isDarkHero ? "btn-shimmer" : ""}>
+            Start a Project <span aria-hidden>→</span>
           </ButtonLink>
         </nav>
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-11 w-11 items-center justify-center text-ink lg:hidden"
+          className={cn("inline-flex h-11 w-11 items-center justify-center lg:hidden", isDarkHero ? "text-paper" : "text-ink")}
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -128,29 +138,30 @@ export default function Header() {
                 href={item.href}
                 className={cn(
                   "flex items-center justify-between border-b border-line/60 py-3 font-display text-lg font-medium",
-                  active ? "text-accent" : "text-ink"
+                  active ? "text-gold-deep" : "text-ink"
                 )}
               >
-                {item.label}
-                <span aria-hidden className="text-ink-muted">
+                <span className="flex items-center gap-3">{item.label} <span className="h-px w-4 bg-gold/30" aria-hidden /></span>
+                <span aria-hidden className="label-studio text-ink-muted">
                   0{i + 1}
                 </span>
               </Link>
             );
           })}
           <div className="pt-4">
-            <ButtonLink href="/order" className="w-full" size="lg">
-              Start a Project
+            <ButtonLink href="/order" className="w-full btn-shimmer" size="lg">
+              Start a Project <span aria-hidden>→</span>
             </ButtonLink>
             <div className="mt-4 flex gap-3 text-sm">
-              <a href={`tel:${site.phoneHref}`} className="font-medium text-accent underline underline-offset-4">
+              <a href={`tel:${site.phoneHref}`} className="font-medium text-ink underline decoration-gold/30 underline-offset-4 hover:decoration-gold">
                 Call {site.phone}
               </a>
               <span className="text-ink-muted">·</span>
-              <a href={site.social.whatsapp} target="_blank" rel="noopener noreferrer" className="font-medium text-accent underline underline-offset-4">
+              <a href={site.social.whatsapp} target="_blank" rel="noopener noreferrer" className="font-medium text-ink underline decoration-gold/30 underline-offset-4 hover:decoration-gold">
                 WhatsApp
               </a>
             </div>
+            <p className="mt-3 label-studio text-ink-muted/60">CS / MADE IN SOUTH AFRICA — 2026</p>
           </div>
         </nav>
       </div>
