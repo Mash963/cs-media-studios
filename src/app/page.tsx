@@ -53,75 +53,72 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          {/* ── Falling brand onto logo — requested animation ── */}
-          {/* The CS badge is in the background image at ~center. These texts fall from above and land on it. */}
-          <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-5 pt-16 md:pt-12" aria-hidden>
-            {/* Spacer to align falling texts just below the badge (badge is at image center) */}
-            <div className="h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px]" aria-hidden />
-            <div className="flex flex-col items-center text-center">
-              <h1 className="animate-fall font-display text-[1.7rem] font-extrabold leading-none tracking-[-0.02em] drop-shadow-[0_3px_14px_rgba(0,0,0,0.65)] sm:text-3xl md:text-4xl lg:text-[2.7rem]">
-                <span className="bg-gradient-to-b from-gold via-gold to-gold-deep bg-clip-text text-transparent">CS MEDIA STUDIOS</span>
+          {/* ── CONQUEROR SUPREME — the event (WHO → WHAT → BRAND → PROMISE) ── */}
+          <div className="relative">
+            {/* WHO — massive, art-directed */}
+            <div className="relative">
+              <p className="label-studio animate-fall-soft text-gold/80">WHO — Conqueror Supreme</p>
+              <h1 className="mt-3 font-display font-extrabold leading-[0.82] tracking-[-0.05em]">
+                <span className="block animate-fall text-[13vw] text-paper sm:text-[10vw] md:text-[8.5vw] lg:text-[7.2rem] xl:text-[8rem]">CONQUEROR</span>
+                <span className="block animate-fall delay-100 text-[13vw] leading-[0.85] sm:text-[10vw] md:text-[8.5vw] lg:text-[7.2rem] xl:text-[8rem] text-gold">SUPREME</span>
               </h1>
-              <p className="animate-fall-soft delay-300 mt-3 font-display text-[10px] font-semibold uppercase tracking-[0.22em] text-gold/95 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] sm:text-xs md:text-sm">
-                Conqueeror Supreme Creative & Technology Studio
+              {/* WHAT — tiny technical, layered over massive */}
+              <p className="animate-fall-soft delay-300 mt-4 max-w-xl font-display text-[11px] font-semibold uppercase tracking-[0.24em] text-paper/45 md:text-xs">
+                Creative & Technology Studio <span className="mx-2 text-gold/40">—</span> South Africa — Est. 2026
               </p>
-              <p className="animate-fall-soft delay-500 mt-2 font-display text-xs font-semibold uppercase tracking-[0.2em] text-paper drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] sm:text-sm">
-                One Studio. Every Format.
-              </p>
-              <div className="animate-fall-soft delay-700 mx-auto mt-4 h-px w-16 bg-gold/50" aria-hidden />
             </div>
-            {/* Keep flow below — pushes grid down so it doesn't overlap badge */}
-            <div className="h-6 md:h-8" aria-hidden />
+
+            {/* BRAND — layered, with gold */}
+            <div className="mt-10 flex flex-wrap items-end gap-4">
+              <h2 className="animate-fall-soft delay-300 font-display text-[1.7rem] font-extrabold leading-none tracking-[-0.02em] sm:text-3xl md:text-[2.2rem]">
+                <span className="bg-gradient-to-b from-gold via-gold to-gold-deep bg-clip-text text-transparent">CS MEDIA STUDIOS</span>
+              </h2>
+              <span className="hidden h-px w-8 self-center bg-gold/30 sm:block" aria-hidden />
+              <span className="animate-fall-soft delay-500 font-display text-[10px] font-semibold uppercase tracking-[0.2em] text-paper/40">Conqueror Supreme</span>
+            </div>
+
+            {/* PROMISE — with negative space */}
+            <div className="mt-6 max-w-2xl">
+              <h3 className="animate-fall-soft delay-500 font-display text-[2rem] font-bold leading-[0.9] tracking-[-0.03em] text-paper sm:text-4xl md:text-5xl lg:text-[3.2rem]">
+                <span className="block">ONE STUDIO.</span>
+                <span className="block text-gold">EVERY FORMAT.</span>
+              </h3>
+              <p className="animate-fall-soft delay-700 mt-4 font-display text-sm font-semibold uppercase tracking-[0.18em] leading-relaxed text-paper/60">
+                Design <span className="text-gold/70">·</span> Photo <span className="text-gold/70">·</span> Video <span className="text-gold/70">·</span> Motion <span className="text-gold/70">·</span> Campaign Media
+              </p>
+              <p className="animate-fall-soft delay-700 mt-2 font-display text-xs font-medium uppercase tracking-[0.18em] text-paper/30">Web · Software · Technology — Coming soon</p>
+            </div>
           </div>
-          {/* In-flow spacer matching the absolute block's height so content below doesn't overlap */}
-          <div className="h-[280px] sm:h-[300px] md:h-[340px] lg:h-[380px]" aria-hidden />
 
-          {/* Hero details — below the fall */}
-          <div className="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12 lg:items-end">
-            <div>
-              <Reveal delay={300}>
-                <p className="mb-3 flex items-center gap-2 font-display text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
-                  <span className="h-px w-6 bg-gold" aria-hidden />
-                  Conqueror Supreme
+          {/* Hero details — below the event, with intentional asymmetry */}
+          <div className="mt-12 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10 lg:items-start">
+            <Reveal delay={500}>
+              <div className="relative border-l-2 border-gold/30 pl-6">
+                <p className="max-w-md text-base leading-relaxed text-paper/60">
+                  From a single poster to a complete campaign, from a photograph to a finished video — <span className="text-paper">we build visual presence</span> designed to be seen, remembered and used.
                 </p>
-              </Reveal>
-              <Reveal delay={340}>
-                <h2 className="max-w-xl font-display text-[2.1rem] font-bold leading-[0.9] tracking-[-0.03em] text-paper sm:text-4xl md:text-[2.6rem]">
-                  <span className="block">ONE STUDIO.</span>
-                  <span className="block text-gold">EVERY FORMAT.</span>
-                </h2>
-              </Reveal>
-              <Reveal delay={380}>
-                <p className="mt-4 max-w-md font-display text-sm font-semibold uppercase tracking-[0.18em] leading-relaxed text-paper/70">
-                  Design <span className="text-gold/80">·</span> Photo <span className="text-gold/80">·</span> Video <span className="text-gold/80">·</span> Motion <span className="text-gold/80">·</span> Campaign Media
-                </p>
-              </Reveal>
-              <Reveal delay={420}>
-                <p className="mt-2 font-display text-xs font-medium uppercase tracking-[0.18em] text-paper/30">Web · Software · Technology — Coming soon</p>
-              </Reveal>
-            </div>
-
-            <div className="lg:pb-2">
-              <Reveal delay={360}>
-                <div className="border border-paper/10 bg-ink/40 p-6 backdrop-blur md:p-7">
-                  <p className="label-studio text-gold">Start here</p>
-                  <p className="mt-3 font-display text-base font-semibold leading-snug text-paper">A creative studio that proves its claim on its own homepage.</p>
-                  <p className="mt-2 text-sm leading-relaxed text-paper/55">One brief becomes posters, social, video and motion — a connected system, not disconnected files.</p>
-                  <div className="mt-6 flex flex-col gap-3">
-                    <ButtonLink href="/order" size="lg" className="btn-shimmer btn-arrow justify-center">
-                      Start a Project <span aria-hidden>→</span>
-                    </ButtonLink>
-                    <ButtonLink href="/portfolio" variant="paper" size="lg" className="btn-arrow justify-center">
-                      Explore the Work <span aria-hidden>↓</span>
-                    </ButtonLink>
-                  </div>
-                  <div className="mt-6 flex items-center justify-between border-t border-paper/10 pt-4">
-                    <span className="label-studio text-paper/35">CS / 2026 — 001</span>
-                    <span className="font-display text-xs text-paper/35">Design. Print. Digital.</span>
-                  </div>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <ButtonLink href="/order" size="lg" className="btn-shimmer btn-arrow">
+                    Start a Project <span aria-hidden>→</span>
+                  </ButtonLink>
+                  <ButtonLink href="/portfolio" variant="paper" size="lg" className="btn-arrow">
+                    Explore the Work <span aria-hidden>→</span>
+                  </ButtonLink>
                 </div>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={520}>
+              <div className="relative -mt-2 border border-paper/10 bg-ink/45 p-6 backdrop-blur md:p-6">
+                <p className="label-studio text-gold">CS / 001 — Start here</p>
+                <p className="mt-2 font-display text-sm font-semibold leading-snug text-paper">One brief becomes posters, social, video and motion.</p>
+                <p className="mt-1 text-xs leading-relaxed text-paper/50">A connected system, not disconnected files. Trusted for campaigns, businesses, events and creators.</p>
+                <div className="mt-4 flex items-center justify-between border-t border-paper/10 pt-3">
+                  <span className="label-studio text-paper/30">Design. Print. Digital.</span>
+                  <span className="label-studio text-gold/60">→ Exhibition</span>
+                </div>
+              </div>
+            </Reveal>
           </div>
 
           {/* Bottom studio strip */}
@@ -208,31 +205,39 @@ export default function HomePage() {
               <span className="border border-gold/25 bg-gold/10 px-3 py-1 label-studio text-gold-deep">4 Divisions Live — Book Now</span>
             </div>
           </Reveal>
-          <div className="mt-10 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-            {creative.divisions.map((d, i) => (
-              <Link
-                key={d.id}
-                href="/services"
-                className="card-lift group relative overflow-hidden bg-paper p-7 md:p-8"
-              >
-                <span className="pointer-events-none absolute right-4 top-4 font-display text-5xl font-extrabold leading-none tracking-tighter text-ink/[0.04] group-hover:text-gold/[0.06] transition-colors">
-                  0{i+1}
-                </span>
-                <span className="label-studio text-gold-deep">
-                  {d.label} <span className="ml-2 text-[9px] tracking-[0.18em] text-emerald-700 border border-emerald-200 bg-emerald-50 px-1.5 py-0.5">Live</span>
-                </span>
-                <h3 className="relative mt-3 font-display text-xl font-semibold text-ink group-hover:text-ink transition-colors md:text-2xl">{d.title}</h3>
-                <p className="relative mt-2 text-sm leading-relaxed text-ink-muted">{d.description}</p>
-                <div className="relative mt-4 flex flex-wrap gap-1.5">
-                  {d.services.slice(0,3).map(s => (
-                    <span key={s} className="bg-paper-alt px-2 py-1 font-display text-[10px] uppercase tracking-wide text-ink-muted">{s}</span>
-                  ))}
-                </div>
-                <span className="btn-arrow relative mt-5 inline-flex items-center gap-1.5 label-studio text-ink group-hover:text-gold-deep transition-colors">
-                  {d.cta.label} <span aria-hidden>→</span>
-                </span>
-              </Link>
-            ))}
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {creative.divisions.map((d, i) => {
+              const visuals: Record<string, { img: string; ph: string; aspect: string }> = {
+                "cs-design": { img: "/portfolio/ward-12-campaign.jpg", ph: "DESIGN", aspect: "aspect-[16/10]" },
+                "cs-photo": { img: "/portfolio/photo-campaign-portrait.jpg", ph: "PHOTO", aspect: "aspect-[4/3]" },
+                "cs-video": { img: "/portfolio/event-video-edit.jpg", ph: "VIDEO", aspect: "aspect-[16/9]" },
+                "cs-motion": { img: "/portfolio/motion-announcement.jpg", ph: "MOTION", aspect: "aspect-[16/10]" },
+              };
+              const v = visuals[d.id] || { img: "/portfolio/candidate-launch.jpg", ph: d.label, aspect: "aspect-[16/10]" };
+              return (
+                <Link
+                  key={d.id}
+                  href="/services"
+                  className="card-lift group relative overflow-hidden border border-line bg-paper"
+                >
+                  <div className="img-zoom border-b border-line">
+                    <PortfolioMedia src={v.img} alt={d.title} placeholder={v.ph} aspect={v.aspect} />
+                  </div>
+                  <div className="p-7 md:p-8">
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="label-studio text-gold-deep">{d.label}</span>
+                      <span className="border border-emerald-200 bg-emerald-50 px-2 py-0.5 font-display text-[9px] font-bold uppercase tracking-[0.18em] text-emerald-700">Live</span>
+                    </div>
+                    <h3 className="mt-3 font-display text-xl font-semibold text-ink md:text-2xl group-hover:text-gold-deep transition-colors">{d.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">{d.description}</p>
+                    <span className="btn-arrow mt-5 inline-flex items-center gap-1.5 label-studio text-ink group-hover:text-gold-deep transition-colors">
+                      {d.cta.label} <span aria-hidden>→</span>
+                    </span>
+                  </div>
+                  <span className="pointer-events-none absolute right-3 top-3 bg-ink/70 px-2 py-1 label-studio text-paper backdrop-blur">0{i+1}</span>
+                </Link>
+              );
+            })}
           </div>
           <Reveal delay={80} className="mt-6 flex items-center justify-center gap-2">
             <span className="h-px w-6 bg-gold/30" aria-hidden />
@@ -418,33 +423,40 @@ export default function HomePage() {
               </ButtonLink>
             </Reveal>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {featured.map((item, i) => (
-              <Reveal key={item.id} delay={i * 60}>
-                <Link href="/portfolio" className="group block">
-                  <div className="img-zoom border border-line bg-paper-alt">
-                    <PortfolioMedia
-                      src={item.image}
-                      alt={item.title}
-                      placeholder={item.placeholder}
-                    />
-                  </div>
-                  <div className="mt-4 flex items-start justify-between gap-3">
-                    <div>
-                      <p className="label-studio text-gold-deep">
-                        {item.category} <span className="mx-1 text-ink-muted/40">·</span> {item.year}
-                      </p>
-                      <h3 className="mt-1 font-display text-base font-semibold leading-tight text-ink group-hover:text-gold-deep transition-colors">
-                        {item.title}
-                      </h3>
+          {/* Exhibition — visual-first, asymmetrical */}
+          <div className="mt-10 grid gap-6 md:grid-cols-12">
+            {featured.map((item, i) => {
+              const spans = ["md:col-span-7 lg:col-span-8", "md:col-span-5 lg:col-span-4", "md:col-span-5 lg:col-span-4", "md:col-span-7 lg:col-span-8"];
+              const aspects = ["aspect-[16/10] lg:aspect-[16/9]", "aspect-[4/5] lg:aspect-[3/4]", "aspect-[4/5]", "aspect-[16/10]"];
+              return (
+                <Reveal key={item.id} delay={i * 70} className={spans[i] || "md:col-span-6"}>
+                  <Link href="/portfolio" className="group block">
+                    <div className={`img-zoom relative overflow-hidden border border-line bg-paper-alt ${i === 1 ? "md:mt-8" : ""} ${i === 2 ? "md:-mt-6" : ""}`}>
+                      <PortfolioMedia
+                        src={item.image}
+                        alt={item.title}
+                        placeholder={item.placeholder}
+                        aspect={aspects[i] || "aspect-[4/5]"}
+                      />
+                      <span className="pointer-events-none absolute left-3 top-3 bg-ink/75 px-2 py-1 label-studio text-paper backdrop-blur">0{i+1} — {item.category}</span>
                     </div>
-                    <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center border border-line bg-paper text-ink-muted transition-colors group-hover:border-gold/30 group-hover:bg-gold/10 group-hover:text-gold-deep">
-                      <span aria-hidden className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
+                    <div className="mt-4 flex items-start justify-between gap-3">
+                      <div>
+                        <p className="label-studio text-gold-deep">
+                          {item.category} <span className="mx-1 text-ink-muted/40">·</span> {item.year}
+                        </p>
+                        <h3 className="mt-1 font-display text-lg font-semibold leading-tight text-ink group-hover:text-gold-deep transition-colors">
+                          {item.title}
+                        </h3>
+                      </div>
+                      <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center border border-line bg-paper text-ink-muted transition-colors group-hover:border-gold/30 group-hover:bg-gold/10 group-hover:text-gold-deep">
+                        <span aria-hidden className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
           <div className="mt-8 flex items-center justify-center gap-2 md:hidden">
             <ButtonLink href="/portfolio" variant="secondary" className="btn-arrow w-full justify-center">
